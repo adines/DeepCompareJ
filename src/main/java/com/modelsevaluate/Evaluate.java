@@ -52,20 +52,37 @@ public class Evaluate {
             } else {
                 python = "python3 ";
             }
+
+            JFileChooser pathAPIFileChooser = new JFileChooser();
+            pathAPIFileChooser.setCurrentDirectory(new java.io.File("."));
+            pathAPIFileChooser.setDialogTitle("Select the path of the API");
+            pathAPIFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
             JDialog adAPId = null;
-            GridLayout glAPI = new GridLayout(2, 1);
+            GridLayout glAPI = new GridLayout(2, 2);
             JPanel apiPanel = new JPanel(glAPI);
 
-            JTextField tf = new JTextField();
-            apiPanel.add(new JLabel("Introduce the path of the API"));
-            apiPanel.add(tf);
+            JLabel lPath = new JLabel();
+            JButton bPath = new JButton("Select");
+            apiPanel.add(new JLabel("Select the path of the API"));
+            apiPanel.add(new Label());
+            apiPanel.add(lPath);
+            apiPanel.add(bPath);
+
+            bPath.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (pathAPIFileChooser.showOpenDialog(apiPanel) == JFileChooser.APPROVE_OPTION) {
+                        lPath.setText(pathAPIFileChooser.getSelectedFile().getAbsolutePath());
+                    }
+                }
+            });
 
             JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);
 
             adAPId = adAPI.createDialog("API path");
 
-            adAPId.setVisible(
-                    true);
+            adAPId.setVisible(true);
             Object selectedValue = adAPI.getValue();
             if (selectedValue instanceof Integer) {
                 int selected = ((Integer) selectedValue).intValue();
@@ -73,7 +90,7 @@ public class Evaluate {
 
                     JPanel pMain = new JPanel(new GridLayout(4, 1, 20, 20));
 
-                    String pathAPI = tf.getText();
+                    String pathAPI = lPath.getText()+"/";
                     adAPId.dispose();
                     String comando = python + pathAPI + "listFrameworks.py";
                     Process p = Runtime.getRuntime().exec(comando);
@@ -431,7 +448,7 @@ public class Evaluate {
                             JTable table;
                             DefaultTableModel tableModel = new DefaultTableModel(selectedModels, selected2);
                             Set set = jsonObject.keySet();
-                            Set set3=new HashSet();
+                            Set set3 = new HashSet();
                             set3.add("Model");
                             for (Object o : set) {
                                 String s = (String) o;
@@ -455,19 +472,16 @@ public class Evaluate {
                                 tableModel.setColumnIdentifiers(set3.toArray());
                                 tableModel.addRow(row);
                             }
-                            String filas[][]=new String[tableModel.getRowCount()][tableModel.getColumnCount()];
-                            for(int j=0;j<tableModel.getRowCount();j++)
-                            {
-                                for(int k=0;k<tableModel.getColumnCount();k++)
-                                {
-                                    filas[j][k]=(String)tableModel.getValueAt(j, k);
+                            String filas[][] = new String[tableModel.getRowCount()][tableModel.getColumnCount()];
+                            for (int j = 0; j < tableModel.getRowCount(); j++) {
+                                for (int k = 0; k < tableModel.getColumnCount(); k++) {
+                                    filas[j][k] = (String) tableModel.getValueAt(j, k);
                                 }
                             }
-                            table = new JTable(filas,set3.toArray());
+                            table = new JTable(filas, set3.toArray());
 
                             JScrollPane result = new JScrollPane(table);
-                            
-                            
+
                             JOptionPane jop = new JOptionPane(result, JOptionPane.PLAIN_MESSAGE, JOptionPane.CANCEL_OPTION);
                             JDialog dMain = jop.createDialog("Result");
                             dMain.setVisible(true);
