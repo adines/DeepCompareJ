@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -90,7 +91,7 @@ public class Evaluate {
 
                     JPanel pMain = new JPanel(new GridLayout(4, 1, 20, 20));
 
-                    String pathAPI = lPath.getText()+"/";
+                    String pathAPI = lPath.getText()+File.separator;
                     adAPId.dispose();
                     String comando = python + pathAPI + "listFrameworks.py";
                     Process p = Runtime.getRuntime().exec(comando);
