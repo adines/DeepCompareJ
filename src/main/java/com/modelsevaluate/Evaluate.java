@@ -1,38 +1,26 @@
 package com.modelsevaluate;
 
-import java.awt.Choice;
 import java.awt.GridLayout;
 import java.awt.Label;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -50,7 +38,6 @@ public class Evaluate {
         JDialog dialogMain=null;
         JDialog dMain=null;
         try {
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             String so = System.getProperty("os.name");
             String python;
             if (so.contains("Windows")) {
@@ -109,7 +96,7 @@ public class Evaluate {
                             JSONObject obj = new JSONObject();
                             JSONArray arr = new JSONArray();
                             JSONObject item;
-//                            Object selectedModels[] = listModel.toArray();
+                            
                             Object selectedModels[] = ef.getPredictors();
                             for (Object o : selectedModels) {
                                 item = new JSONObject();
@@ -121,7 +108,7 @@ public class Evaluate {
 
                             JSONArray arrMeasures = new JSONArray();
                             Object selectedMeasures[] = ef.getMeasures();
-//                            Object selectedMeasures[] = listMeasures.toArray();
+
                             for (Object o : selectedMeasures) {
                                 arrMeasures.add((String) o);
                             }

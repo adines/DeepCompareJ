@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
@@ -21,9 +22,7 @@ import org.json.simple.parser.ParseException;
  */
 public class EvaluatorFrame extends javax.swing.JPanel {
 
-    /**
-     * Creates new form EvaluatorFrame
-     */
+    
     public EvaluatorFrame(String pathAPI) {
         try {
             this.pathAPI = pathAPI;
@@ -38,6 +37,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
             modelModel = new DefaultListModel<>();
             measureModel = new DefaultListModel<>();
             rDatasets = new HashMap<String, String>();
+            cbmFramework=new DefaultComboBoxModel<>();
 
             //Frameworks
             String comando = python + pathAPI + "listFrameworks.py";
@@ -75,8 +75,9 @@ public class EvaluatorFrame extends javax.swing.JPanel {
 
             taReadDataset.setText("");
             for (Object o : frameworks) {
-                cbFramework.addItem((String) o);
+                cbmFramework.addElement((String) o);
             }
+            cbFramework.setModel(cbmFramework);
             cbFramework.setSelectedItem("Keras");
 
             for (Object o : models) {
@@ -588,6 +589,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
     Map<String, String> rDatasets;
     JFileChooser datasetFileChooser;
     JFileChooser classesFileChooser;
+    DefaultComboBoxModel<String> cbmFramework;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAddMeasure;
     private javax.swing.JButton bAddModel;
