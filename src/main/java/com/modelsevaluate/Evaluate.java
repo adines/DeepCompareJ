@@ -71,7 +71,7 @@ public class Evaluate {
                 }
             });
 
-            JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);
+            JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
 
             adAPId = adAPI.createDialog("API path");
 
@@ -85,7 +85,7 @@ public class Evaluate {
                     adAPId.dispose();
 
                     EvaluatorFrame ef=new EvaluatorFrame(pathAPI);
-                    JOptionPane jop=new JOptionPane(ef, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);
+                    JOptionPane jop=new JOptionPane(ef, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
                     dialogMain = jop.createDialog("Select input");
                     dialogMain.setVisible(true);
                     Object selectedValue2 = jop.getValue();
