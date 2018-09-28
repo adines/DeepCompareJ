@@ -13,7 +13,11 @@
             <type>jar</type>
         </dependency>
     </dependencies>
+    
     <properties>
+        <main-class>Evaluate</main-class>
+        <license.licenseName>bsd_2</license.licenseName>
+        <license.copyrightOwners>University of La Rioja</license.copyrightOwners>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

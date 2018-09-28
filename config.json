@@ -1,0 +1,1 @@
+{"predictors":[{"framework":"DL4J","model":"ResNet50"}],"readDataset":"ReadDatasetFolders","pathLabels":"C:\\Users\\adines\\Desktop\\labels.txt","measures":["accuracy","rank5"],"pathDataset":"C:\\Users\\adines\\Desktop\\DatasetPrueba"}
