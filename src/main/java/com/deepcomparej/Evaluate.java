@@ -1,4 +1,4 @@
-package com.modelsevaluate;
+package com.deepcomparej;
 
 import java.awt.GridLayout;
 import java.awt.Label;

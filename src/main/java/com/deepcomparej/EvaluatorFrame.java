@@ -1,4 +1,4 @@
-package com.modelsevaluate;
+package com.deepcomparej;
 
 import java.io.FileReader;
 import java.io.IOException;
