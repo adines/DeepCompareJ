@@ -10,11 +10,11 @@ To use DeepCompareJ is necessary to have installed Java 8 and download the [Deep
 ## Example
 DeepCompareJ uses DeepClas4Bio API, so when DeepCompareJ starts, the users have to select the path of the DeepClas4Bio API. Then DeepCompareJ connects with DeepClas4Bio API to obtain all necessary information. 
 
-![Path of the API](docs/images/APIPath.png)
+![Path of the API](docs/images/APIPath.PNG)
 
 The interface of the Java application is the following:
 
-![Interface](docs/images/javaAPP.png)
+![Interface](docs/images/javaAPP.PNG)
 
 Here the users can manage the models and frameworks they want to compare. For this task, the users have three options:
 
