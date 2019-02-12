@@ -23,16 +23,16 @@ import org.json.simple.parser.ParseException;
 public class EvaluatorFrame extends javax.swing.JPanel {
 
     
-    public EvaluatorFrame(String pathAPI) {
+    public EvaluatorFrame() {
         try {
-            this.pathAPI = pathAPI;
-            String so = System.getProperty("os.name");
-
-            if (so.contains("Windows")) {
-                python = "python ";
-            } else {
-                python = "python3 ";
-            }
+//            this.pathAPI = pathAPI;
+//            String so = System.getProperty("os.name");
+//
+//            if (so.contains("Windows")) {
+//                python = "python ";
+//            } else {
+//                python = "python3 ";
+//            }
 
             modelModel = new DefaultListModel<>();
             measureModel = new DefaultListModel<>();
@@ -40,7 +40,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
             cbmFramework=new DefaultComboBoxModel<>();
 
             //Frameworks
-            String comando = python + pathAPI + "listFrameworks.py";
+            String comando = "deepclas4bio-listFrameworks";
             Process p = Runtime.getRuntime().exec(comando);
             p.waitFor();
             JSONParser parser = new JSONParser();
@@ -48,7 +48,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
             JSONArray frameworks = (JSONArray) jsonObject.get("frameworks");
 
             //Modelos
-            comando = python + pathAPI + "listModels.py -f Keras";
+            comando ="deepclas4bio-listModels Keras";
             p = Runtime.getRuntime().exec(comando);
             p.waitFor();
             JSONParser parser2 = new JSONParser();
@@ -56,7 +56,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
             JSONArray models = (JSONArray) jsonObject2.get("models");
 
             //Medidas
-            comando = python + pathAPI + "listMeasures.py";
+            comando ="deepclas4bio-listMeasures";
             p = Runtime.getRuntime().exec(comando);
             p.waitFor();
             parser = new JSONParser();
@@ -64,7 +64,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
             JSONArray measures = (JSONArray) jsonObject.get("measures");
 
             //ReadDataset
-            comando = python + pathAPI + "listReadDatasets.py";
+            comando ="deepclas4bio-listReadDatasets";
             p = Runtime.getRuntime().exec(comando);
             p.waitFor();
             parser = new JSONParser();
@@ -492,7 +492,7 @@ public class EvaluatorFrame extends javax.swing.JPanel {
     private void cbFrameworkItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFrameworkItemStateChanged
         try {
             String frameworkSelected = (String) cbFramework.getSelectedItem();
-            String comando = python + pathAPI + "listModels.py -f " + frameworkSelected;
+            String comando ="deepclas4bio-listModels " + frameworkSelected;
             Process p = Runtime.getRuntime().exec(comando);
             p.waitFor();
             JSONParser parser = new JSONParser();
@@ -569,15 +569,13 @@ public class EvaluatorFrame extends javax.swing.JPanel {
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EvaluatorFrame("/home/adines/Escritorio/DeepClas4Bio/").setVisible(true);
+                new EvaluatorFrame().setVisible(true);
             }
         });
     }
 
     private DefaultListModel<String> modelModel;
     private DefaultListModel<String> measureModel;
-    String python;
-    String pathAPI;
     Map<String, String> rDatasets;
     JFileChooser datasetFileChooser;
     JFileChooser classesFileChooser;
