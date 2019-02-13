@@ -5,12 +5,10 @@ This Java appplication uses [DeepClas4Bio API](https://github.com/adines/DeepCla
 
 
 ## Requirements
-To use DeepCompareJ is necessary to have installed Java 8 and download the [DeepClas4Bio API](https://github.com/adines/DeepClas4Bio).
+To use DeepCompareJ is necessary to have installed Java 8 and the [DeepClas4Bio API](https://github.com/adines/DeepClas4Bio).
 
 ## Example
-DeepCompareJ uses DeepClas4Bio API, so when DeepCompareJ starts, the users have to select the path of the DeepClas4Bio API. Then DeepCompareJ connects with DeepClas4Bio API to obtain all necessary information. 
-
-![Path of the API](docs/images/APIPath.PNG)
+DeepCompareJ uses DeepClas4Bio API, so when DeepCompareJ starts, the application connects with DeepClas4Bio API to obtain all necessary information. 
 
 The interface of the Java application is the following:
 
